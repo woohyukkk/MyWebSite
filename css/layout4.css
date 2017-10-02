@@ -1,0 +1,179 @@
+#content 
+{
+	position:absolute;
+	width:80%;
+	left:10%;
+	right:10%;
+	text-align:left;
+}
+
+#navbar 
+{
+	position:absolute;
+	width:100%;
+	height:45px;
+	top:200px;
+}
+
+#banner 
+{
+	position:absolute;
+	width:100%;
+	height:200px;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+	top:0px;
+}
+
+#desc 
+{
+	position:absolute;
+	padding-left:1%;
+	padding-right:0%;
+	padding-top:0px;
+	width:100%;
+        height: 100%;
+	margin-top:0px;
+	top:250px;
+}
+
+#slider {
+	height:400px;
+	width:650px;
+	margin: 0px auto;
+	position:relative;
+	border-radius:4px;
+	overflow:hidden;
+	}
+#image {
+        margin-left:15%;
+	margin-right:30%;
+	height:70%;
+	width:70%;
+	position:absolute;
+	}
+#button{ 
+        position: relative;
+          margin-left: 46%;
+	
+}
+#cap {
+	text-align: center;
+	}
+.left {
+	
+	position:absolute;
+	float: top;
+	
+	opacity:10;
+	
+	}
+.right {
+	position: absolute;
+	float: top;
+	left: 90px;
+	opacity:10;
+	}
+.center {
+	position:absolute;
+	float: top;
+	left: 30px;
+	opacity:10;
+	}
+        
+h1{
+    text-align: center
+}
+p{
+    text-align: center
+}
+
+img.sbu_navbar
+{
+	float:right;
+}
+
+img.photo_floating_right
+{
+	float:right;
+	padding-left:20px;
+}
+
+img.photo_floating_left
+{
+	float:left;
+	padding-right:20px;
+}
+
+a.footer
+{
+	font-size:18pt;
+	margin: auto;
+	padding-top:00px;
+}
+
+img {
+        width:100%;
+	border:0;
+}
+
+img.stonybrook {
+	background-color:white;
+	padding-left:10px;
+	float:left;
+}
+
+img.cs {
+	float:right;
+	padding-right:10px;
+}
+
+img.start_up
+{
+	float:right;
+	margin-left:20px;
+	margin-right:20px;
+	margin-bottom:5px;
+}
+
+img.centered {
+	margin-left:30%;
+	margin-right:30%;
+}
+
+
+a.nav, a.open_nav {
+	display:inline-block;
+	border:none;
+	text-decoration:none;
+	text-align:center;
+	font-weight:bold;
+	padding-left:5px;
+	padding-right:20px;
+	padding-top:5px;
+	width:80px;
+}
+
+p.contact_info
+{
+	padding-top:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+td.course_name
+{
+	padding-left:10px;
+	padding-right:10px;
+}
+
+img.logo_page
+{
+	position:relative;
+	width:100%;
+	height:auto;
+}
+

@@ -1,0 +1,74 @@
+@import url(https://fonts.googleapis.com/css?family=Leckerli+One);
+
+body {
+	background-color:#000000;
+	font-family: 'Leckerli One', cursive;
+}
+
+td.course_num
+{
+	font-family:monospace;
+}
+
+p,li,td,th {
+	font-size:18pt;
+        color:yellow;
+}
+
+h2,h3,h4,h5,h6 {
+	color:#003399
+}
+
+
+
+#navbar {
+	background-color:yellow;
+	margin-top:5px;
+}
+
+#banner {
+	font-size:24pt;
+	color:#ffffff;
+	background-color:#000000;
+}
+
+#desc {
+	background-color:#000000;
+	color:#000000;
+}
+
+a.nav1 {
+	color:#000000;
+	font-size:12pt;
+	font-weight:normal;
+}
+
+a.open_nav1 {
+	color:#000000;
+	font-size:18pt;
+	font-weight:bold;
+}
+
+hr {
+	color:#111155;
+}
+
+a.open_nav:hover {
+
+}
+
+a.nav1:hover{
+	color:rgb(118,143,165);
+}
+
+a:hover {
+	color:rgb(118,143,165);
+}
+
+a {
+	text-decoration:none;
+	color:#ffffff;
+        font-size:18pt;
+	font-weight:bold;
+}
+

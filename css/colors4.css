@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css?family=Bilbo);
+
+body {
+	background-color:white;
+	font-family: 'Bilbo', cursive;
+}
+
+
+
+p,li,td,th {
+	font-size:18pt;
+        
+}
+
+h1,h2,h3,h4,h5,h6 {
+	color:#003399
+}
+
+
+
+#navbar {
+	background-color:#555555;
+	margin-top:5px;
+}
+
+#banner {
+	font-size:24pt;
+	color:#000000;
+	background-color:#ffffff;
+}
+
+#desc {
+	background-color:#ffffff;
+	color:#000000;
+}
+
+#button{ 
+        background-color:#ffffff;
+	color:#000000;
+	
+}
+
+a.nav {
+	color:#ffffff;
+	font-size:12pt;
+	font-weight:normal;
+}
+
+a.open_nav {
+	color:#ffffff;
+	font-size:18pt;
+	font-weight:bold;
+}
+
+hr {
+	color:#111155;
+}
+
+a.open_nav:hover {
+
+}
+
+a.nav:hover{
+	color:rgb(118,143,165);
+}
+
+a:hover {
+	color:rgb(118,143,165);
+}
+
+a {
+	text-decoration:none;
+	color:#000000;
+        font-size:18pt;
+	font-weight:bold;
+}
+
