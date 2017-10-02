@@ -35,7 +35,7 @@ and open the template in the editor.
 	
     </head>
     <body>
-  <?php
+  <?php// connect DB
 $servername = "localhost";
 $username = "admin";
 $password = "******";
@@ -68,7 +68,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-
+//update visitor counter, and data
 $sql = "UPDATE countTB SET count=$n WHERE id=1";
 if ($conn->query($sql) === TRUE) {
    // echo "Record updated successfully";
@@ -77,7 +77,7 @@ if ($conn->query($sql) === TRUE) {
 }
 
 
-
+//get ip, weather, location , brower , OS information
 $user_agent     =   $_SERVER['HTTP_USER_AGENT'];
 
 
@@ -87,8 +87,9 @@ $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
 $location= $details->country."-".$details->region."-".$details->city;
 $user_os        =   getOS();
 $user_browser   =   getBrowser();
-
-$sql = "insert into visitors(ip,browser,platform,location)
+	    
+ //upload information to DB
+$sql = "insert into visitors(ip,browser,platform,location) 
 	values('$ip','$user_browser','$user_os','$location')";
 
 if ($conn->query($sql) === TRUE) {
@@ -220,7 +221,8 @@ function getBrowser() {
     return $browser;
 
 }
-function getWeather($ip){
+function getWeather($ip){ 
+//get ip, location, weather, return weather icon index
 $api_1 = 'https://ipapi.co/' . $ip . '/latlong/';
 $location = file_get_contents($api_1);
 $point = explode(",", $location);
@@ -280,7 +282,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	}
 }
-
+	    
+//test user input to protect website
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
@@ -288,7 +291,7 @@ function test_input($data) {
   return $data;
 }
 
-
+// Manuelly save comment
 function save($name,$email,$comment){
 	
 
@@ -331,12 +334,13 @@ $conn->close();
 		<div class="container-fluid">
  
 		<ul class="nav navbar-nav nav-pills navbar-fixed-top" >
+<!--show weather icon at corner-->
 		<img src="http://openweathermap.org/img/w/<?php echo $icon;?>.png"   alt="some_text"  style="float:right;width:70px;height:70px;">
 		<li class="active"> <a  href="index.php" id="home_link">Home</a> </li>
 		<li >  <a  href="story.php" >Story</a> </li>
 		<li >  <a  href="video.php" >Video</a> </li>
 		<li >  <a  href="slides.php">Gallery</a> </li>
-		
+<!-- show green fronts when visitor successfully sent comment -->
 		<li >  <a  id="msg" href="#myModal" data-toggle="modal" style= color:<?php if($state=="success"){echo "green";}else echo "black";?>;>@Msg Author</a> </li>
 		</ul>
 	     	<div class="nav navbar-nav navbar-fixed-bottom navbar-right" >
@@ -363,32 +367,35 @@ Not Support Audio
 				<div class="modal-body">
 					
 
-<form  class="form-inline" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  Name: <input type="text"  class="form-control" id="name" placeholder="Cloud Strife" style="width:100px;" name="name" value="<?php echo $name;?>">
-  <span class="error"> <?php echo $nameErr;?></span>
-  <br><br>
-  Email: <input type="email"  class="form-control " style="width:200px;" name="email" placeholder="Cloud@7thHeaven.com" value="<?php echo $email;?>">
-  <span class="error"> <?php echo $emailErr;?></span>
-  <br><br>
-  
- <textarea id="comment" name="comment" rows="5" class="form-control input-lg" placeholder="You will be in memory......" style="width:100%;"><?php echo $comment;?></textarea>
-<br>
-<h4 type="text"   id="location"  name="location" style="color:black; text-align:right;"  >From:  <?php echo $location;?></h4>
+				<form  class="form-inline" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+					Name: <input type="text"  class="form-control" id="name" placeholder="Cloud Strife" style="width:100px;" name="name" value="<?php echo $name;?>">
+					<span class="error"> <?php echo $nameErr;?></span>
+					 <br><br>
+					
+					Email: <input type="email"  class="form-control " style="width:200px;" name="email" placeholder="Cloud@7thHeaven.com" value="<?php echo $email;?>">
+					<span class="error"> <?php echo $emailErr;?></span>
+					<br><br>
+
+					 <textarea id="comment" name="comment" rows="5" class="form-control input-lg" placeholder="You will be in memory......" style="width:100%;"><?php echo $comment;?></textarea>
+					<br>
+					//display user location
+					<h4 type="text"   id="location"  name="location" style="color:black; text-align:right;"  >From:  <?php echo $location;?></h4>
  
 
   
-<div class="modal-footer">
+				<div class="modal-footer">
 			
-				
+				<!--signature-->
 				Raven-Project
-			<input type="<?php if($state!="success"){echo "submit";}else{echo "text";}?>" name="submit" value="<?php if($state!="success"){echo "submit";}else{echo "Thank You!";}?>" class="btn btn-default btn-lg" >
+				<!--lock the submit button when user sent the msg-->
+				<input type="<?php if($state!="success"){echo "submit";}else{echo "text";}?>" name="submit" value="<?php if($state!="success"){echo "submit";}else{echo "Thank You!";}?>" class="btn btn-default btn-lg" >
 
 
-</div>				
-				
-<div class="alert alert-<?php echo $state ?> text-center">
-  <strong><?php echo $msg;?></strong> 
-</div>
+	</div>				
+	<!--show green alert when Msg sent successfully or show the error msg	-->		
+	<div class="alert alert-<?php echo $state ?> text-center">
+	  	<strong><?php echo $msg;?></strong> 
+	</div>
 
 
 				</div>
@@ -399,6 +406,7 @@ Not Support Audio
 		</div>
 	</div>
         
+	<!--not use yet -->
 	<div class="modal" id="myModal2">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -412,6 +420,7 @@ Not Support Audio
 			
 		</div>
 	</div>
+		
         <div id="banner">
 		<!-- BANNER NEEDS TO BE SET -->
 		<img class="img-rounded img-responsive center-block" src="./images/banner1.png" style="width:500px;height:200px;">
@@ -424,7 +433,8 @@ Not Support Audio
 				<a href="#footer" class="text-center" > <h1 style=display:none;>Sephiroth</h1>  </a>
 			<p class="text-center">I Will....never be a memory </p>
 			<img href="#footer" style=display:none; alt="Home page" class="img-rounded img-responsive" src="./images/homePageImage.jpg">
-			<a href="#navbar1" name="footer" class="text-center text-inline">   <p> <?php echo $email;?> Welcome! You are the NO. <?php echo "<strong style=color:red>$row[count]</strong>" ?> visitor. <br>Back to top</p>  </a>
+			<!-- Display visitor name when msg sent, show the number of the visitor-->
+			<a href="#navbar1" name="footer" class="text-center text-inline">   <p>  Welcome <?php echo $name;?>! You are the NO. <?php echo "<strong style=color:red>$row[count]</strong>" ?> visitor. <br>Back to top</p>  </a>
         </div>
 
 
